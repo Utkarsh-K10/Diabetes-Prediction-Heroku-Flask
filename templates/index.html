@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Diabetes-Prediction</title>
+  </head>
+  <body>
+      <div class="header">
+          <h1 align="center"> <span class="badge badge-dark">Diabetes Predictor</span></h1>
+      </div>
+    <form action="{{ url_for('predict')}}" method="POST">
+
+        <div class="form" align="center">
+        <div class="col-md-6 mb-3">
+        <div class="col-md-6 mb-3">
+          <div class="form-group" >
+              <label class="form-check-label" for="i0">Glucose</label>
+              <input type="text" id="i0" name="glucose" class="form-control" placeholder=" eg.128" required="required" />
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="form-group">
+              <label class="form-check-label" for="i1">Blood Pressure</label>
+              <input type="text" id="i1" name="bloodpressure" class="form-control" placeholder=" eg.72" required="required" />
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="form-group">
+              <label class="form-check-label" for="i2">Skin Thickness</label>
+              <input type="text" id="i2" name="skinthickness" class="form-control" placeholder=" eg.32" required="required" />
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="form-group">
+              <label class="form-check-label" for="i3">Insulin</label>
+              <input type="text" id="i3" name="insulin" class="form-control" placeholder="eg. 125" required="required" />
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="form-group">
+              <label class="form-check-label" for="i4">Body Mass Index</label>
+              <input type="text" id="i4" name="bmi" class="form-control" placeholder="eg. 33.6" required="required" />
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="form-group">
+              <label class="form-check-label" for="i5">DiabetesPedigreeFunction</label>
+              <input type="text" id="i5" name="dpf" class="form-control" placeholder=" eg. 0.627 " required="required" />
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="form-group">
+              <label class="form-check-label" for="i6" >Age</label>
+              <input type="text" id="i6" name="age" class="form-control" placeholder="your age" required="required" />
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="form-group">
+              <label class="form-check-label" for="i7">Pregnancies</label>
+              <input type="text" id="i7" name="pregnancies" class="form-control" placeholder="eg. 4" required="required" />
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <button type="submit" class="btn btn-outline-primary">Predict</button>
+            <input class="btn btn-outline-primary" type="reset" value="Reset">
+        </div>
+
+
+         <br>
+        <div class="col-md-6 mb-3">
+            <div>
+                {% if final_output==1 %}
+
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Sorry!</strong> You have Diabetes.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+
+                {% elif final_output==0 %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Hurrah!</strong> You dont have Diabetes.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class='footer'>
+            <p>Developed by Utkarsh Kushwaha</p>
+            <i style="font-size:24px" class="fa">&#xf08c;</i>
+            <a href="https://www.linkedin.com/in/utk10">Connect with me at Linkedin!</a>
+            <br>
+            <i style="font-size:24px" class="fa">&#xf09b;</i>
+            <a href="https://github.com/Utkarsh-K10">Connect with me at Github!</a>
+        </div>
+        </div>
+        </div>
+    </form>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
